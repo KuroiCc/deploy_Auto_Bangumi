@@ -1,0 +1,6 @@
+_Auto_Bangumi_Download/
+config/
+data/
+logs/
+docker-compose.yml
+env.sh
