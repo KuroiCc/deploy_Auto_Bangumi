@@ -1,0 +1,25 @@
+version: "3.2"
+services:
+  qbittorrent:
+    container_name: qBittorrent
+    environment:
+      - TZ=Asia/Tokyo
+      - TemPath=/downloads
+      - SavePath=/downloads
+      - PGID=100
+      - PUID=1026
+      - WEBUI_PORT=${QB_PORT}
+    volumes:
+      - ./config:/config
+      - ${DOWNLOAD_PATH}:/downloads # 填入下载绝对路径
+    ports:
+      - ${QB_PORT}:${QB_PORT}
+      - "6881:6881"
+      - "6881:6881/udp"
+    networks:
+      - auto_bangumi
+    restart: unless-stopped
+    image: superng6/qbittorrent
+
+networks:
+  auto_bangumi:
