@@ -7,10 +7,11 @@ fi
 
 export GID=1000
 export UID=1000
-export DOWNLOAD_PATH=${DOWNLOAD_PATH:?"Need to set DOWNLOAD_PATH non-empty"}
+export AB_DOWNLOADER_HOST=${AB_DOWNLOADER_HOST:?"Need to set AB_DOWNLOADER_HOST non-empty"}
 export QB_PORT=${QB_PORT:?"Need to set QB_PORT non-empty"}
 
-if [ ! -d "$DOWNLOAD_PATH" ]; then
+if [ "$LOCAL_QB" = "yes" ] && [ ! -d "$DOWNLOAD_PATH" ]; then
+    export DOWNLOAD_PATH=${DOWNLOAD_PATH:?"Need to set DOWNLOAD_PATH non-empty"}
     echo "mkdir $DOWNLOAD_PATH"
     mkdir -p $DOWNLOAD_PATH
 fi
